@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bar_height"
+    android:background="@mipmap/titlebar_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/titlebar_re_line_marleft"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titlebar_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/thewaroftracel"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/titlebar_title_tv_textsize" />
+
+        <TextView
+            android:id="@+id/titlebar_subtitle_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titlebar_subtitle"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/titlebar_menu"
+        android:layout_width="@dimen/titlebar_menu_wid"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/titlebar_menu_marright"
+        android:src="@drawable/menu_normal" />
+
+    <ImageView
+        android:id="@+id/titlebar_personal"
+        android:layout_width="@dimen/titlebar_personal_wid"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/titlebar_mar_right"
+        android:layout_toLeftOf="@id/titlebar_menu"
+        android:src="@drawable/title_personal" />
+
+    <ImageView
+        android:id="@+id/titlebar_search"
+        android:layout_width="@dimen/titlebar_search_wid"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/titlebar_search_mar_right"
+        android:layout_toLeftOf="@id/titlebar_personal"
+        android:src="@drawable/title_search" />
+
+
+</RelativeLayout>

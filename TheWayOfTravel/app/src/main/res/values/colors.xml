@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorSubject">#2e9cce</color>
+    <color name="colorStrategyPlace">#a0000000</color>
+    <color name="global_bg">#eeeff3</color>
+    <color name="line_color">#dadada</color>
+    <color name="activityTravelDetailToolbarBg">#50000000</color>
+    <color name="toolkit_top">#f0ffff</color>
+    <color name="item_travel_rv_alpha">#15000000</color>
+    <color name="gray_loading">#999999</color>
+
+
+</resources>

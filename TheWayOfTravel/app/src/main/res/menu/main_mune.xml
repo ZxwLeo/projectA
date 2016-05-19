@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/offline_collection" android:id="@+id/main_toolbar_collect_mune"/>
+    <item android:title="@string/personal_centrality" android:id="@+id/main_toolbar_personal_mune"/>
+    <item android:title="@string/exit" android:id="@+id/main_toolbar_exit_mune"/>
+
+</menu>

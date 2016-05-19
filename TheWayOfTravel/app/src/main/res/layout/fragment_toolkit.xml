@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="4"
+        android:background="@color/toolkit_top">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/Japan_cn" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/toolkit_temperature_line_mar"
+                android:layout_marginTop="@dimen/toolkit_temperature_line_mar"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trmperature_14"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:textSize="@dimen/temperature_text_size" />
+
+                <View
+                    android:layout_width="@dimen/toolkit_terperature_view_wei"
+                    android:layout_height="@dimen/toolkit_terperature_view_hei"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/toolkit_terperature_view_mar"
+                    android:layout_marginRight="@dimen/toolkit_terperature_view_mar"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperature_26"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="@dimen/temperature_text_size" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/time_14_06" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zerodp"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/ToolKitButtonLine"
+           >
+            <ImageView
+                android:id="@+id/tools_translation_img"
+                android:src="@drawable/tools_translation"
+                style="@style/ToolKitButton"/>
+            <ImageView
+                android:id="@+id/tools_map_img"
+                android:src="@drawable/tools_map"
+                style="@style/ToolKitButton"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ToolKitButtonLine"
+            >
+            <ImageView
+                android:id="@+id/tools_account_img"
+                android:src="@drawable/tools_account"
+                style="@style/ToolKitButton"/>
+            <ImageView
+                android:id="@+id/tools_exchange_img"
+                android:src="@drawable/tools_exchange"
+                style="@style/ToolKitButton"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

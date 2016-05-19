@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/travelnotes_rv_zxw_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/travelnotes_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/fragment_travel_recycler_mar"
+            android:layout_marginRight="@dimen/fragment_travel_recycler_mar" />
+
+        <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+            android:id="@+id/travelnotes_rv_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/travel_rv_header_hei"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_margin="@dimen/fragment_travel_recycler_header_mar">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/travel_rv_header_mar">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/travelnotes_rv_header_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/travelnotes_rv_header_tablayout"
+                    android:layout_width="@dimen/travel_rv_header_tab_wid"
+                    android:layout_height="@dimen/travel_rv_header_tab_hei"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+    </FrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+        <ImageView
+            android:src="@mipmap/custompoi_96"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/travel_detail_hlv_lv_titleorplace"
+            android:text="卷首小语"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <TextView
+        android:text="dddddddddddd"
+        android:id="@+id/travel_detail_hlv_lv_content"
+        android:layout_width="match_parent"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"/>
+    <com.lanou3g.zxw.thewayoftravel.view.NoScrollListView
+        android:id="@+id/tracel_detail_hlv_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.lanou3g.zxw.thewayoftravel.view.NoScrollListView>
+
+</LinearLayout>

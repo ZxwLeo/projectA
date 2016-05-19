@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/item_strategy_grid_wid"
+    android:layout_height="@dimen/item_strategy_grid_hei"
+    android:layout_margin="@dimen/item_strategy_grid_mar"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/item_strategy_gridview_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/fengjing" />
+
+        <TextView
+            android:id="@+id/item_strategy_gridview_country_cn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/itme_strategy_grid_country_marleft"
+            android:layout_marginTop="@dimen/itme_strategy_grid_country_martop"
+            android:text="@string/Japan_cn"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/itme_strategy_grid_country_textsize" />
+
+        <TextView
+            android:id="@+id/item_strategy_gridview_country_en"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_strategy_gridview_country_cn"
+            android:layout_marginLeft="@dimen/itme_strategy_grid_country_en_marleft"
+            android:text="@string/japan_en"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/itme_strategy_grid_country_en_textsize" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/item_strategy_gridview_place_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/item_strategy_gridview_place_marbottom"
+                android:textSize="@dimen/item_strategy_gridview_place_textsize"
+                android:background="@color/colorStrategyPlace"
+                android:padding="@dimen/item_strategy_gridview_place_padding"
+                android:gravity="center"
+                android:text="@string/place_1010"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

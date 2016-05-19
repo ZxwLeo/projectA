@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/item_strategy_listview_line_martop"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_strategy_listview_area_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/item_strategy_listview_area_marleft"
+        android:layout_marginTop="@dimen/item_strategy_listview_area_martop"
+        android:text="@string/asia" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_strategy_listview_view_hei"
+        android:layout_margin="@dimen/item_strategy_listview_view_mar"
+        android:background="@android:color/darker_gray" />
+
+    <com.lanou3g.zxw.thewayoftravel.view.NoScrollGridView
+        android:id="@+id/item_strategy_listview_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/item_strategy_listview_grid_marleft"
+        android:layout_marginTop="@dimen/item_strategy_listview_grid_martop"
+        android:columnWidth="@dimen/item_strategy_listview_grid_columnwid"
+        android:horizontalSpacing="@dimen/item_strategy_listview_grid_horizontalspacing"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="@dimen/item_strategy_listview_grid_verticalspacing" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/global_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/rv_foot_line_padding" >
+
+    <ProgressBar
+        android:id="@+id/travelnotes_rv_foot_progressbar"
+        android:layout_width="@dimen/rv_foot_progressbar_long"
+        android:layout_height="@dimen/rv_foot_progressbar_long"
+        android:visibility="gone">
+    </ProgressBar>
+
+    <TextView
+        android:id="@+id/travelnotes_rv_foot_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/rv_foot_Tv_marleft"
+        android:textSize="@dimen/rv_foot_Tv_textsize"
+        android:textColor="@color/gray_loading"
+        android:text="@string/Loading" >
+    </TextView>
+
+</LinearLayout>
