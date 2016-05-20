@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import com.lanou3g.zxw.thewayoftravel.R;
 import com.lanou3g.zxw.thewayoftravel.base.BaseFragment;
 import com.lanou3g.zxw.thewayoftravel.bean.StrategyBean;
+import com.lanou3g.zxw.thewayoftravel.net.NetValue;
 
 import org.json.JSONArray;
 
@@ -50,7 +51,7 @@ public class StrategyFragment extends BaseFragment {
         //获取网络数据
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(
-                "http://chanyouji.com/api/destinations.json?page=1",
+                NetValue.TRAVEL_STRATEGY,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

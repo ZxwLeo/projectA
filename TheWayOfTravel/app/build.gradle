@@ -30,4 +30,5 @@ dependencies {
     compile 'com.bartoszlipinski:recyclerviewheader2:2.0.0'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'de.greenrobot:eventbus-annotation-processor:3.0.0-beta1'
 }

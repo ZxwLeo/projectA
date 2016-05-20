@@ -1,6 +1,7 @@
 package com.lanou3g.zxw.thewayoftravel.traveldetail;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lanou3g.zxw.thewayoftravel.R;
+import com.lanou3g.zxw.thewayoftravel.base.MyApplication;
 import com.lanou3g.zxw.thewayoftravel.bean.TracelDetailsBean;
 import com.lanou3g.zxw.thewayoftravel.utils.NumUtil;
 import com.lanou3g.zxw.thewayoftravel.view.NoScrollListView;
@@ -25,7 +27,8 @@ public class TravelDetailHLAdapter extends BaseExpandableListAdapter implements 
     private Context context;
     private PinnedHeaderExpandableListView exListView;
 
-    public TravelDetailHLAdapter( Context context,
+
+    public TravelDetailHLAdapter(Context context,
                                  PinnedHeaderExpandableListView exListView) {
         this.context = context;
         this.exListView = exListView;
@@ -39,12 +42,20 @@ public class TravelDetailHLAdapter extends BaseExpandableListAdapter implements 
 
     @Override
     public int getGroupCount() {
+        int temp = detailsBean == null ? 0 : detailsBean.getTrip_days().size();
+        Log.d("exLv的group的数量", "temp:" + temp);
+
         return detailsBean == null ? 0 : detailsBean.getTrip_days().size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return detailsBean == null ? 0 : detailsBean.getTrip_days().get(groupPosition).getNodes().size();
+        int temp = 0;
+        if (detailsBean != null) {
+            temp = detailsBean == null ? 0 : detailsBean.getTrip_days().get(groupPosition).getNodes().size();
+            Log.d("exLv的childern的数量", "temp:" + temp);
+        }
+        return temp;
     }
 
     @Override
@@ -75,24 +86,24 @@ public class TravelDetailHLAdapter extends BaseExpandableListAdapter implements 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         FatherViewHolder fHolder = null;
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).
                     inflate(R.layout.travel_detail_hlv_group_item, parent, false);
             fHolder = new FatherViewHolder(convertView);
             convertView.setTag(fHolder);
-        }else{
+        } else {
             fHolder = (FatherViewHolder) convertView.getTag();
         }
         TracelDetailsBean.TripDaysBean tripDaysBean =
                 detailsBean.getTrip_days().get(groupPosition);
         fHolder.dayTv.setText("DAY" + tripDaysBean.getDay());
         //TODO dateTv 有问题
-        if (tripDaysBean.getTrip_date()!=null) {
+        if (tripDaysBean.getTrip_date() != null) {
             fHolder.dateTv.setVisibility(View.VISIBLE);
             fHolder.dateTv.setText(
                     NumUtil.getLineToNianYueRi(tripDaysBean.getTrip_date())
                             + " 周" + NumUtil.getDateToWeekDay(tripDaysBean.getTrip_date()));
-        }else {
+        } else {
             fHolder.dateTv.setVisibility(View.GONE);
         }
         return convertView;
@@ -105,22 +116,23 @@ public class TravelDetailHLAdapter extends BaseExpandableListAdapter implements 
                              View convertView,
                              ViewGroup parent) {
         SonViewHolder sHolder = null;
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).
                     inflate(R.layout.travel_detail_hlv_son_item, parent, false);
             sHolder = new SonViewHolder(convertView);
             convertView.setTag(sHolder);
-        }else {
+        } else {
             sHolder = (SonViewHolder) convertView.getTag();
         }
+
         TracelDetailsBean.TripDaysBean.NodesBean nodesBean =
                 detailsBean.getTrip_days().get(groupPosition).
                         getNodes().get(childPosition);
-            TravelDetailNoScLvItemLvAdapter lvAdapter =
-                    new TravelDetailNoScLvItemLvAdapter(context);
-            lvAdapter.setTripDaysBean(
-                    detailsBean.getTrip_days().get(groupPosition));
-            sHolder.hlNsLv.setAdapter(lvAdapter);
+        TravelDetailNoScLvItemLvAdapter lvAdapter =
+                new TravelDetailNoScLvItemLvAdapter(MyApplication.getContext(),groupPosition);
+        lvAdapter.setTripDaysBean(
+                detailsBean);
+        sHolder.hlNsLv.setAdapter(lvAdapter);
         return convertView;
     }
 
@@ -174,6 +186,7 @@ public class TravelDetailHLAdapter extends BaseExpandableListAdapter implements 
 
     private class SonViewHolder {
         NoScrollListView hlNsLv;
+
         public SonViewHolder(View itemSView) {
             hlNsLv = (NoScrollListView) itemSView.findViewById(R.id.travel_detail_hlv_son_noscroll_lv);
         }

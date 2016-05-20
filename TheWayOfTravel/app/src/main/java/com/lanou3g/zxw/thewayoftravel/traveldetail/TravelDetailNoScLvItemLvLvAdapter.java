@@ -1,6 +1,7 @@
 package com.lanou3g.zxw.thewayoftravel.traveldetail;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ public class TravelDetailNoScLvItemLvLvAdapter extends BaseAdapter {
     public void setNotesBean(
             TracelDetailsBean.TripDaysBean.NodesBean notesBean) {
         this.notesBean = notesBean;
+        Log.d("hhhhhhh", "lvlvEntry_name():" + notesBean.getEntry_name());
+        notifyDataSetChanged();
     }
 
     @Override
@@ -56,15 +59,21 @@ public class TravelDetailNoScLvItemLvLvAdapter extends BaseAdapter {
         }else {
             holder = (MyViewHolder) convertView.getTag();
         }
-        TracelDetailsBean.TripDaysBean.NodesBean.NotesBean notesBeans =
-                notesBean.getNotes().get(position);
-        if (notesBeans.getRow_order()!=0) {
-            holder.placeTv.setText(notesBean.getEntry_name().toString());
-            holder.placeDetailTv.setText(notesBeans.getDescription());
-            Picasso.with(context).load(notesBeans.getPhotoBean().getUrl()).
-                    resize(notesBeans.getPhotoBean().getImage_width(),
-                            notesBeans.getPhotoBean().getImage_height())
-                    .into(holder.placePhotoImg);
+
+        if (notesBean.getRow_order()!=0) {
+            try{
+                TracelDetailsBean.TripDaysBean.NodesBean.NotesBean notesBeans =
+                        notesBean.getNotes().get(position);
+                holder.placeTv.setText(notesBean.getEntry_name().toString());
+                holder.placeDetailTv.setText(notesBeans.getDescription());
+                Picasso.with(context).load(notesBeans.getPhotoBean().getUrl()).
+                        resize(notesBeans.getPhotoBean().getImage_width(),
+                                notesBeans.getPhotoBean().getImage_height())
+                        .into(holder.placePhotoImg);
+            }catch (Exception e){
+
+            }
+
         }else {
             holder.itemView.setVisibility(View.GONE);
         }
@@ -90,4 +99,6 @@ public class TravelDetailNoScLvItemLvLvAdapter extends BaseAdapter {
 
         }
     }
+
+
 }

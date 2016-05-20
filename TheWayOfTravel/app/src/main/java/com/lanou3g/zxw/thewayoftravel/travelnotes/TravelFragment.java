@@ -23,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.lanou3g.zxw.thewayoftravel.R;
 import com.lanou3g.zxw.thewayoftravel.base.BaseFragment;
 import com.lanou3g.zxw.thewayoftravel.bean.TravelnotesBean;
+import com.lanou3g.zxw.thewayoftravel.net.NetValue;
 import com.lanou3g.zxw.thewayoftravel.traveldetail.TravelDetailActivity;
+import com.lanou3g.zxw.thewayoftravel.traveldetail.TravelDetailNoScLvItemLvAdapter;
 import com.lanou3g.zxw.thewayoftravel.travelnotes.pagerfragment.TravelRvHeadFristFragment;
 import com.lanou3g.zxw.thewayoftravel.travelnotes.pagerfragment.TravelRvHeadPagerAdapter;
 
@@ -71,7 +73,7 @@ public class TravelFragment extends BaseFragment implements OnTravelRvItemListen
         travelnotesRv.setLayoutManager(linearLayoutManager);
         rvAdapter = new TravelRvAdapter(context);
         //获取网络数据
-        initGsonData("http://chanyouji.com/api/trips/featured.json?page");
+        initGsonData(NetValue.TRAVEL_URL_FIRST);
         //加入recyclerview头布局
         rvHeader.attachTo(travelnotesRv);
         //头布局加入轮播图
@@ -96,7 +98,7 @@ public class TravelFragment extends BaseFragment implements OnTravelRvItemListen
         travelRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                initGsonData("http://chanyouji.com/api/trips/featured.json?page");
+                initGsonData(NetValue.TRAVEL_URL_FIRST);
                 if (travelBeans != null) {
                     rvAdapter.addItem(travelBeans);
                     travelRefresh.setRefreshing(false);
@@ -126,7 +128,7 @@ public class TravelFragment extends BaseFragment implements OnTravelRvItemListen
                                 Toast.makeText(context, "上拉", Toast.LENGTH_SHORT).show();
                                 //加载数据
                                 addGsonItemData(
-                                        "http://chanyouji.com/api/trips/featured.json?page=" + dataId);
+                                        NetValue.TRAVEL_URL_LOAD + dataId);
                                 //加载完成后 转换为读取前的模式
                                 rvAdapter.changeMoreStatus(TravelRvAdapter.PULLUP_LOAD_MORE);
                                 dataId++;

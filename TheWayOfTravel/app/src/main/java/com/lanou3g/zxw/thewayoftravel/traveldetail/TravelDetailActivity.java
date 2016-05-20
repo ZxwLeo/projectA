@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.lanou3g.zxw.thewayoftravel.R;
 import com.lanou3g.zxw.thewayoftravel.base.BaseActivity;
 import com.lanou3g.zxw.thewayoftravel.bean.TracelDetailsBean;
+import com.lanou3g.zxw.thewayoftravel.net.NetValue;
 import com.lanou3g.zxw.thewayoftravel.net.VolleySingle;
 import com.lanou3g.zxw.thewayoftravel.view.PinnedHeaderExpandableListView;
 import com.squareup.picasso.Picasso;
@@ -26,13 +28,13 @@ import com.squareup.picasso.Picasso;
 public class TravelDetailActivity extends BaseActivity implements View.OnClickListener {
     private Toolbar travelDetailToolbar;
     private ImageView backBtn;
-    private PinnedHeaderExpandableListView  expandableListView;
+    private PinnedHeaderExpandableListView expandableListView;
     private TravelDetailHLAdapter detailHLAdapter;
     private String detailId;
-    private TextView titleTDTv,timeTDTv;
-    private ImageView headerTDImg,backgroundTDTv;
+    private TextView titleTDTv, timeTDTv;
+    private ImageView headerTDImg, backgroundTDTv;
     private CollapsingToolbarLayout collapsingToolbarLayout;
-    private TracelDetailsBean tracelDetailsBean;
+    private TravelDetailNoScLvItemLvAdapter noScLvItemLvAdapter;
 
     @Override
     protected void initView() {
@@ -52,6 +54,7 @@ public class TravelDetailActivity extends BaseActivity implements View.OnClickLi
         detailId = getIntent().getStringExtra("detailId");
         initHeaderLv();
         initGsonData(detailId);
+
         setSupportActionBar(travelDetailToolbar);
         CollapsingToolbarLayout collapsingToolbarLayout =
                 (CollapsingToolbarLayout) findViewById(
@@ -62,24 +65,24 @@ public class TravelDetailActivity extends BaseActivity implements View.OnClickLi
         backBtn.setOnClickListener(this);
 
 
-
-
     }
 
     private void initGsonData(String detailId) {
-        VolleySingle.addRequest("http://chanyouji.com/api/trips/" + detailId + ".json", TracelDetailsBean.class,
+        VolleySingle.addRequest(NetValue.TRAVEL_DETAIL_URL + detailId + ".json", TracelDetailsBean.class,
                 new Response.Listener<TracelDetailsBean>() {
                     @Override
                     public void onResponse(TracelDetailsBean response) {
                         Log.d("TravelDetailActivity", response.getName());
                         detailHLAdapter.setDetailsBean(response);
                         titleTDTv.setText(response.getName());
-                        timeTDTv.setText(response.getStart_date()+" "+response.getPhotos_count()+"图");
+                        timeTDTv.setText(response.getStart_date() + " " + response.getPhotos_count() + "图");
                         Picasso.with(getApplicationContext()).load(response.getFront_cover_photo_url()).
                                 into(backgroundTDTv);
                         Picasso.with(getApplicationContext()).load(response.getUser().getImage()).
                                 into(headerTDImg);
-
+                        for (int i = 0; i < response.getTrip_days().size(); i++) {
+                            expandableListView.expandGroup(i);
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -100,9 +103,6 @@ public class TravelDetailActivity extends BaseActivity implements View.OnClickLi
         expandableListView.setHeaderView(view);
         expandableListView.setGroupIndicator(null);
 
-        for (int i = 0; i < detailHLAdapter.getGroupCount(); i++) {
-            expandableListView.expandGroup(i);
-        }
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
